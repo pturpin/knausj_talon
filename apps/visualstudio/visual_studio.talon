@@ -23,6 +23,10 @@ show settings: key(alt-t o)
 #show shortcuts:
 #show snippets:
 
+#Tests
+test run: key(ctrl-r t)
+test debug: key(ctrl-r ctrl-t)
+
 # Display
 fullscreen switch: key(shift-alt-enter)
 wrap switch: key(ctrl-e ctrl-w)
@@ -88,8 +92,8 @@ fold definitions: key(ctrl-m ctrl-o)
 #Debugging
 break point: key(f9)
 step over: key(f10)
-debug step into: key(f11)
-debug step out [of]: key(f10)
-debug start: key(f5)
+[debug] step into: key(f11)
+[debug] step out [of]: key(shift-f11)
+debug (start| run): key(f5)
 debug stopper: key(shift-f5)
 debug continue: key(f5)
