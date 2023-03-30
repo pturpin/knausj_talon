@@ -38,11 +38,11 @@ class AppActions:
         # requires easy window switcher or equivalent (built into most Linux)
 
     def window_next():
-        actions.key("alt-`")
+        actions.key("win-`")
 
     def window_open():
         actions.key("ctrl-n")
         # requires easy window switcher or equivalent (built into most Linux)
 
     def window_previous():
-        actions.key("alt-shift-`")
+        actions.key("win-shift-`")

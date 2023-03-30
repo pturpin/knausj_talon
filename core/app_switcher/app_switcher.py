@@ -3,6 +3,7 @@ import shlex
 import subprocess
 import time
 from pathlib import Path
+import logging
 
 import talon
 from talon import Context, Module, actions, app, fs, imgui, ui
@@ -67,6 +68,45 @@ words_to_exclude = [
     "terminal",
     "visual",
     "windows",
+]
+
+apps_to_skip = [
+    "Alertus Desktop Alert",
+    "Application Frame Host",
+    "AquaSnap.Daemon.exe",
+    "AquaSnap.Daemon.x64.exe",
+    "AquaSnap.DpiAwareAgent.exe",
+    "COM Surrogate",
+    "Console Window Host",
+    "G HUB",
+    "Host Process for Windows Services",
+    "IPoint.exe",
+    "LGHUB",
+    "LGHUB Agent",
+    "LGHUB Crashpad Handler",
+    "Lenovo.Modern.ImController.PluginHost",
+    "Location Notification",
+    "Microsoft Bing Service",
+    "Microsoft Phone Link",
+    "Microsoft Windows Subsystem Service Host",
+    "Microsoft Windows Search Protocol Host",
+    "OES Desktop - RSIGuard",
+    "PowerToys.Runner",
+    "PwaHelper executable for Identity Proxy",
+    "Runtime Broker",
+    "SCNotification",
+    "SearchHost.exe",
+    "Send to OneNote Tool",
+    "Sink to receive asynchronous callbacks for WMI client application",
+    "TextInputHost.exe",
+    "Video.UI.exe",
+    "Widgets.exe",
+    "Windows Command Processor",
+    "Windows Explorer",
+    "Windows Shell Experience Host",
+    "XMouseButtonControl.exe",
+    "csrss.exe",
+    "ctfmon.exe"
 ]
 
 # on Windows, WindowsApps are not like normal applications, so
@@ -230,6 +270,14 @@ def update_running_list():
     running_application_dict = {}
     running = {}
     for cur_app in ui.apps(background=False):
+
+        #skip apps in the exclude list
+        if cur_app.name in apps_to_skip:
+            #logging.warn(f'Skipping app: {cur_app.name}')
+            continue
+
+        #logging.warn(f'Adding app: {cur_app.name}')
+
         running_application_dict[cur_app.name] = True
 
         if app.platform == "windows":
@@ -238,7 +286,7 @@ def update_running_list():
             running_application_dict[cur_app.exe.split(os.path.sep)[-1]] = True
 
     running = actions.user.create_spoken_forms_from_list(
-        [curr_app.name for curr_app in ui.apps(background=False)],
+        [curr_app.name for curr_app in ui.apps(background=False) if curr_app.name not in apps_to_skip],
         words_to_exclude=words_to_exclude,
         generate_subsequences=True,
     )
@@ -306,6 +354,17 @@ class Actions:
         """Focus a new application by name"""
         app = actions.user.get_running_app(name)
         actions.user.switcher_focus_app(app)
+
+    def switcher_focus_window_by_title(app: str, title: str):
+        """Focus the window whose app name constains app and title contains title"""
+        for window in ui.windows():
+            if app in window.app.name and window.title != "":
+                # logging.warn(f'Checking Window: "{window.app.name}" window:"{window.title}"')
+                if title in window.title:
+                    window.focus()
+                    return
+        logging.error(f'Window not found: "{app}" "{title}"')
+
 
     def switcher_focus_app(app: ui.App):
         """Focus application and wait until switch is made"""

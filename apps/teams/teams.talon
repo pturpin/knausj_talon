@@ -3,6 +3,10 @@ os: windows
 os: linux
 -
 
+#settings():
+#    user.fire_chicken_pop_action = 3
+#    user.fire_chicken_pop_string = 'key(ctrl-shift-m)'
+
 # Shortcut reference
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2
 
@@ -48,6 +52,9 @@ decline call: key(ctrl-shift-d)
 start audio call: key(ctrl-shift-c)
 start video call: key(ctrl-shift-u)
 toggle mute: key(ctrl-shift-m)
+unmute: 
+    key(ctrl-shift-m)
+    speech.disable()
 starch screen share session: key(ctrl-shift-e)
 toggle video: key(ctrl-shift-o)
 [go] [to] sharing toolbar: key(ctrl-shift-space)

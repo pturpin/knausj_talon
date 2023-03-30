@@ -254,8 +254,27 @@ _snap_positions = {
     "bottom left two thirds": RelativeScreenPos(0, 0.5, 2 / 3, 1),
     "bottom right two thirds": RelativeScreenPos(1 / 3, 0.5, 1, 1),
     "bottom center third": RelativeScreenPos(1 / 3, 0.5, 2 / 3, 1),
+    # unequal ninths with center focus area
+    # .-.--.-.
+    # |-|--|-|
+    # | |  | |
+    # |-|--|-|
+    # '-'--'-'
+    "top left corner": RelativeScreenPos(0, 0, 1 / 4, 1 / 4),
+    "top right corner": RelativeScreenPos(3 / 4, 0, 1, 1 / 4),
+    "bottom left corner": RelativeScreenPos(0, 3 / 4, 1 / 4, 1),
+    "bottom right corner": RelativeScreenPos(3 / 4, 3 / 4, 1, 1),
+    "top center": RelativeScreenPos(1 / 5, 0, 4 / 5, 1 / 4),
+    "bottom center": RelativeScreenPos(1 / 5, 3 / 4, 4 / 5, 1),
+    "left center": RelativeScreenPos(0, 1 / 6, 1 / 4, 5 / 6),
+    "right center": RelativeScreenPos(3 / 4, 1 / 6, 1, 5 / 6),
+
     # Special
-    "center": RelativeScreenPos(1 / 8, 1 / 6, 7 / 8, 5 / 6),
+    "center": RelativeScreenPos(1 / 5, 1 / 6, 4 / 5, 5 / 6), 
+    "center tall": RelativeScreenPos(1 / 5, 0, 4 / 5, 1
+    
+    
+    ),
     "full": RelativeScreenPos(0, 0, 1, 1),
     "fullscreen": RelativeScreenPos(0, 0, 1, 1),
 }
