@@ -4,7 +4,7 @@ mod = Module()
 apps = mod.apps
 apps.microsoft_teams = """
 os: linux
-and app.name: /teams/
+and app.name: /Teams/
 os: linux
 and app.name: /Teams/
 """
