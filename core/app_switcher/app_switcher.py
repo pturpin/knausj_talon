@@ -2,6 +2,7 @@ import os
 import subprocess
 import time
 from pathlib import Path
+import logging
 
 import talon
 from talon import Context, Module, actions, app, fs, imgui, ui
@@ -258,6 +259,17 @@ class Actions:
         """Focus a new application by name"""
         app = actions.user.get_running_app(name)
         actions.user.switcher_focus_app(app)
+
+    def switcher_focus_window_by_title(app: str, title: str):
+        """Focus the window whose app name constains app and title contains title"""
+        for window in ui.windows():
+            if app in window.app.name and window.title != "":
+                # logging.warn(f'Checking Window: "{window.app.name}" window:"{window.title}"')
+                if title in window.title:
+                    window.focus()
+                    return
+        logging.error(f'Window not found: "{app}" "{title}"')
+
 
     def switcher_focus_app(app: ui.App):
         """Focus application and wait until switch is made"""

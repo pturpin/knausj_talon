@@ -5,6 +5,6 @@ apps = mod.apps
 apps.microsoft_teams = """
 os: linux
 and app.name: /Teams/
-os: linux
+os: windows
 and app.name: /Teams/
 """
