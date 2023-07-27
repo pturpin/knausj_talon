@@ -61,6 +61,45 @@ words_to_exclude = [
     "windows",
 ]
 
+apps_to_skip = [
+    "Alertus Desktop Alert",
+    "Application Frame Host",
+    "AquaSnap.Daemon.exe",
+    "AquaSnap.Daemon.x64.exe",
+    "AquaSnap.DpiAwareAgent.exe",
+    "COM Surrogate",
+    "Console Window Host",
+    "G HUB",
+    "Host Process for Windows Services",
+    "IPoint.exe",
+    "LGHUB",
+    "LGHUB Agent",
+    "LGHUB Crashpad Handler",
+    "Lenovo.Modern.ImController.PluginHost",
+    "Location Notification",
+    "Microsoft Bing Service",
+    "Microsoft Phone Link",
+    "Microsoft Windows Subsystem Service Host",
+    "Microsoft Windows Search Protocol Host",
+    "OES Desktop - RSIGuard",
+    "PowerToys.Runner",
+    "PwaHelper executable for Identity Proxy",
+    "Runtime Broker",
+    "SCNotification",
+    "SearchHost.exe",
+    "Send to OneNote Tool",
+    "Sink to receive asynchronous callbacks for WMI client application",
+    "TextInputHost.exe",
+    "Video.UI.exe",
+    "Widgets.exe",
+    "Windows Command Processor",
+    "Windows Explorer",
+    "Windows Shell Experience Host",
+    "XMouseButtonControl.exe",
+    "csrss.exe",
+    "ctfmon.exe"
+]
+
 # on Windows, WindowsApps are not like normal applications, so
 # we use the shell:AppsFolder to populate the list of applications
 # rather than via e.g. the start menu. This way, all apps, including "modern" apps are
@@ -183,6 +222,14 @@ def update_running_list():
     running_application_dict = {}
     running = {}
     for cur_app in ui.apps(background=False):
+
+        #skip apps in the exclude list
+        if cur_app.name in apps_to_skip:
+            #logging.warn(f'Skipping app: {cur_app.name}')
+            continue
+
+        #logging.warn(f'Adding app: {cur_app.name}')
+
         running_application_dict[cur_app.name] = True
 
         if app.platform == "windows":
@@ -191,7 +238,7 @@ def update_running_list():
             running_application_dict[cur_app.exe.split(os.path.sep)[-1]] = True
 
     running = actions.user.create_spoken_forms_from_list(
-        [curr_app.name for curr_app in ui.apps(background=False)],
+        [curr_app.name for curr_app in ui.apps(background=False) if curr_app.name not in apps_to_skip],
         words_to_exclude=words_to_exclude,
         generate_subsequences=True,
     )
