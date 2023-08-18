@@ -3,6 +3,10 @@ os: windows
 os: linux
 -
 
+#settings():
+#    user.fire_chicken_pop_action = 3
+#    user.fire_chicken_pop_string = 'key(ctrl-shift-m)'
+
 # Shortcut reference
 # https://support.office.com/en-us/article/keyboard-shortcuts-for-microsoft-teams-2e8e2a70-e8d8-4a19-949b-4c36dd5292d2
 
@@ -19,13 +23,13 @@ open help: key(f1)
 close: key(escape)
 
 # navigations
-#open activity: key(ctrl-1)
-open chat: key(ctrl-1)
-open teams: key(ctrl-2)
-open calendar: key(ctrl-3)
-open planner: key(ctrl-4)
-open calls: key(ctrl-5)
-open files: key(ctrl-6)
+open activity: key(ctrl-1)
+open chat: key(ctrl-2)
+open teams: key(ctrl-3)
+open calendar: key(ctrl-4)
+open planner: key(ctrl-5)
+open calls: key(ctrl-6)
+open files: key(ctrl-7)
 [go] [to] (prev | previous) [list] item: key(alt-up)
 [go] [to] next [list] item: key(alt-down)
 move [selected] team up: key(ctrl-shift-up)

@@ -8,25 +8,25 @@ bar spaces:
     key(esc)
     key(h)
     key(r)
-message down:
+(go) message down:
     key(esc)
     key(h)
     key(c)
     key(down)
     key(enter)
-message up:
+(go) message up:
     key(esc)
     key(h)
     key(c)
     key(up)
     key(enter)
-spaaces up:
+(go) spaces up:
     key(esc)
     key(h)
     key(r)
     key(up)
     key(enter)
-spaces down:
+(go) spaces down:
     key(esc)
     key(h)
     key(r)
