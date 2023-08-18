@@ -1,5 +1,7 @@
 title: /Google Chat/
 -
+tag(): user.emoji
+-
 bar chat: 
     key(esc)
     key(h)
@@ -32,3 +34,4 @@ bar spaces:
     key(r)
     key(down)
     key(enter)
+    

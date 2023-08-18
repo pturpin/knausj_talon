@@ -16,7 +16,10 @@ focus [work] edge [work]: user.switcher_focus_window_by_title("Edge", "Work")
 focus bing chat: user.switcher_focus_window_by_title("Edge", "Bing AI")
 focus (chat) G P T: user.switcher_focus_window_by_title("Edge", "ChatGPT")
 focus outlook: user.switcher_focus_window_by_title("Outlook", "Inbox")
+focus studio: user.switcher_focus_window_by_title("Microsoft Visual Studio", "Visual Studio")
+focus notepad (plus plus): user.switcher_focus_window_by_title("Notepad++", "Notepad++")
 focus <user.running_applications>: user.switcher_focus(running_applications)
+
 focus fix: 
     key("alt-tab")
     key("alt-tab")
